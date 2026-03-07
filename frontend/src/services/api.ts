@@ -1,37 +1,36 @@
 import request from './request';
 
-/**
- * Health check API
- */
-export const healthApi = {
-  // Health check
-  check: () => request.get('/health'),
-
-  // Test API
-  test: () => request.get('/health/test'),
+// Health check
+export const healthCheck = (): Promise<any> => {
+  return request.get('/health');
 };
 
-/**
- * Book quote API (to be implemented)
- */
-export const bookApi = {
-  // Search book by Douban ID or URL
-  searchBook: (keyword: string) => request.get(`/book/search?keyword=${keyword}`),
-
-  // Get book quotes
-  getQuotes: (bookId: number) => request.get(`/book/${bookId}/quotes`),
+// Book APIs
+export const searchBooks = (keyword: string): Promise<any[]> => {
+  return request.get('/book/search', { params: { keyword } });
 };
 
-/**
- * Template API (to be implemented)
- */
-export const templateApi = {
-  // Get all templates
-  getList: (platform?: string) => {
-    const params = platform ? `?platform=${platform}` : '';
-    return request.get(`/template/list${params}`);
-  },
+export const getBookWithQuotes = (doubanId: string, limit?: number): Promise<any> => {
+  return request.get(`/book/${doubanId}`, {
+    params: { limit }
+  });
+};
 
-  // Get template by ID
-  getById: (id: number) => request.get(`/template/${id}`),
+export const getBookQuotes = (doubanId: string, start?: number, limit?: number): Promise<any[]> => {
+  return request.get(`/book/${doubanId}/quotes`, {
+    params: { start, limit }
+  });
+};
+
+// Template APIs
+export const getTemplates = (): Promise<any[]> => {
+  return request.get('/template/list');
+};
+
+export const getTemplatesByPlatform = (platform: string): Promise<any[]> => {
+  return request.get(`/template/list/${platform}`);
+};
+
+export const getTemplateById = (id: number): Promise<any> => {
+  return request.get(`/template/${id}`);
 };

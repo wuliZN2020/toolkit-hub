@@ -1,8 +1,6 @@
-import { Button, Card, Col, Row, Typography } from 'antd';
-import { BookOutlined, ToolOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-
-const { Title, Paragraph } = Typography;
+import { BookOutlined, ToolOutlined, RightOutlined } from '@ant-design/icons';
+import './Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,57 +8,78 @@ const Home = () => {
   const tools = [
     {
       key: 'book-quote',
-      title: 'Book Quote Formatter',
-      description: 'Crawl book quotes from Douban and format them for WeChat Official Account and Xiaohongshu',
-      icon: <BookOutlined style={{ fontSize: 48, color: '#1890ff' }} />,
+      title: '书摘收集',
+      subtitle: '记录阅读的温度',
+      description: '搜索书籍，收集打动你的句子，一键整理分享',
+      icon: <BookOutlined />,
       path: '/book-quote',
+      disabled: false,
     },
     {
       key: 'more-tools',
-      title: 'More Tools Coming',
-      description: 'More useful tools will be added soon...',
-      icon: <ToolOutlined style={{ fontSize: 48, color: '#52c41a' }} />,
+      title: '更多工具',
+      subtitle: '持续更新中',
+      description: '更多实用工具正在开发，敬请期待',
+      icon: <ToolOutlined />,
       path: '#',
       disabled: true,
     },
   ];
 
   return (
-    <div style={{ padding: '40px 20px', maxWidth: 1200, margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: 60 }}>
-        <Title level={1}>Toolkit Hub</Title>
-        <Paragraph style={{ fontSize: 16, color: '#666' }}>
-          Personal toolkit collection for productivity
-        </Paragraph>
-      </div>
+    <div className="home-container">
+      <div className="home-content">
+        {/* 页头 */}
+        <header className="home-header">
+          <div className="home-badge">工具集</div>
+          <h1 className="home-title">
+            简单<span className="highlight">工具</span>
+          </h1>
+          <p className="home-subtitle">
+            让日常工作更轻松
+          </p>
+        </header>
 
-      <Row gutter={[24, 24]}>
-        {tools.map((tool) => (
-          <Col key={tool.key} xs={24} sm={12} md={8} lg={6}>
-            <Card
-              hoverable={!tool.disabled}
-              style={{
-                height: '100%',
-                opacity: tool.disabled ? 0.6 : 1,
-              }}
+        {/* 工具卡片 */}
+        <div className="tools-grid">
+          {tools.map((tool) => (
+            <div
+              key={tool.key}
+              className={`tool-card ${tool.disabled ? 'disabled' : ''}`}
               onClick={() => !tool.disabled && navigate(tool.path)}
             >
-              <div style={{ textAlign: 'center' }}>
-                <div style={{ marginBottom: 16 }}>{tool.icon}</div>
-                <Title level={4}>{tool.title}</Title>
-                <Paragraph style={{ color: '#666', minHeight: 60 }}>
-                  {tool.description}
-                </Paragraph>
+              <div className="tool-card-inner">
+                <div className="tool-icon">
+                  {tool.icon}
+                </div>
+                <div className="tool-content">
+                  <h2 className="tool-title">{tool.title}</h2>
+                  <p className="tool-subtitle">{tool.subtitle}</p>
+                  <p className="tool-description">{tool.description}</p>
+                </div>
                 {!tool.disabled && (
-                  <Button type="primary" style={{ marginTop: 16 }}>
-                    Open Tool
-                  </Button>
+                  <div className="tool-action">
+                    <span>立即使用</span>
+                    <RightOutlined />
+                  </div>
+                )}
+                {tool.disabled && (
+                  <div className="tool-badge-coming">即将推出</div>
                 )}
               </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+              <div className="tool-card-shine"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* 页脚信息 */}
+        <footer className="home-footer">
+          <div className="footer-divider"></div>
+          <p className="footer-text">
+            © 2026 工具箱 · 简单实用
+          </p>
+        </footer>
+      </div>
     </div>
   );
 };

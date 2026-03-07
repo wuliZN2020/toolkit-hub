@@ -1,0 +1,241 @@
+/* 极简暖色系 */
+
+:root {
+  /* 暖色系配色 */
+  --warm-bg: #FAF8F3;
+  --warm-card: #FFFFFF;
+  --warm-primary: #D4A574;
+  --warm-secondary: #E8C9A0;
+  --warm-accent: #C89865;
+  --warm-text: #3E3832;
+  --warm-text-light: #8B8580;
+  --warm-border: #E8E3DC;
+  --warm-shadow: rgba(212, 165, 116, 0.08);
+}
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.home-container {
+  min-height: 100vh;
+  background: var(--warm-bg);
+  padding: 60px 24px;
+}
+
+.home-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 页头 */
+.home-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.home-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 20px;
+  color: var(--warm-accent);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+}
+
+.home-title {
+  font-size: clamp(36px, 6vw, 52px);
+  font-weight: 300;
+  color: var(--warm-text);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.home-title .highlight {
+  color: var(--warm-primary);
+  font-weight: 400;
+}
+
+.home-subtitle {
+  font-size: clamp(14px, 2vw, 16px);
+  color: var(--warm-text-light);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* 工具网格 */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+/* 工具卡片 */
+.tool-card {
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  padding: 40px 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tool-card:hover:not(.disabled) {
+  border-color: var(--warm-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--warm-shadow);
+}
+
+.tool-card.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tool-card-inner {
+  position: relative;
+}
+
+.tool-icon {
+  font-size: 40px;
+  color: var(--warm-primary);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.tool-card:hover:not(.disabled) .tool-icon {
+  transform: scale(1.05);
+}
+
+.tool-content {
+  margin-bottom: 24px;
+}
+
+.tool-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin: 0 0 8px 0;
+}
+
+.tool-subtitle {
+  font-size: 13px;
+  color: var(--warm-primary);
+  margin: 0 0 12px 0;
+  font-weight: 400;
+}
+
+.tool-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--warm-text-light);
+  margin: 0;
+  font-weight: 300;
+  min-height: 60px;
+}
+
+.tool-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--warm-primary);
+  color: white;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.tool-card:hover:not(.disabled) .tool-action {
+  background: var(--warm-accent);
+  transform: translateX(4px);
+}
+
+.tool-badge-coming {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
+  border-radius: 20px;
+  color: var(--warm-text-light);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* 页脚 */
+.home-footer {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--warm-border);
+  margin: 0 auto 20px;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--warm-text-light);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 40px 20px;
+  }
+
+  .home-header {
+    margin-bottom: 60px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .tool-card {
+    padding: 32px 24px;
+  }
+
+  .tool-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 32px 16px;
+  }
+
+  .tool-card {
+    padding: 28px 20px;
+  }
+
+  .tool-icon {
+    font-size: 36px;
+  }
+
+  .tool-title {
+    font-size: 18px;
+  }
+
+  .tool-description {
+    font-size: 13px;
+    min-height: 50px;
+  }
+}

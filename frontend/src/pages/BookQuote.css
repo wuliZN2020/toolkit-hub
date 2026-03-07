@@ -1,0 +1,806 @@
+/* 极简暖色系 - 书摘页面 */
+
+:root {
+  --warm-bg: #FAF8F3;
+  --warm-card: #FFFFFF;
+  --warm-primary: #D4A574;
+  --warm-secondary: #E8C9A0;
+  --warm-accent: #C89865;
+  --warm-text: #3E3832;
+  --warm-text-light: #8B8580;
+  --warm-border: #E8E3DC;
+  --warm-shadow: rgba(212, 165, 116, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.book-quote-container {
+  min-height: 100vh;
+  background: var(--warm-bg);
+  padding: 40px 20px 60px;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+/* 返回首页按钮 */
+.home-back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid var(--warm-border);
+  color: var(--warm-text);
+  background: var(--warm-card);
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.home-back-button:hover {
+  border-color: var(--warm-primary);
+  color: var(--warm-primary);
+  background: var(--warm-bg);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 20px;
+  color: var(--warm-accent);
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300;
+  color: var(--warm-text);
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.hero-title .highlight {
+  color: var(--warm-primary);
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: var(--warm-text-light);
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+/* 功能切换标签 */
+.function-tabs {
+  margin-bottom: 30px;
+}
+
+.function-tabs .ant-tabs-tab {
+  font-size: 15px;
+  color: var(--warm-text-light);
+}
+
+.function-tabs .ant-tabs-tab-active {
+  color: var(--warm-primary);
+}
+
+.function-tabs .ant-tabs-ink-bar {
+  background: var(--warm-primary);
+}
+
+/* 搜索区域 */
+.search-container {
+  margin-bottom: 40px;
+}
+
+.search-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+}
+
+/* 纯文本排版区域 */
+.plain-text-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.plain-text-card {
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  background: var(--warm-card);
+}
+
+.plain-text-card .ant-card-body {
+  padding: 32px;
+}
+
+.plain-text-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.book-input {
+  border: 1px solid var(--warm-border);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.book-input:hover,
+.book-input:focus {
+  border-color: var(--warm-primary);
+}
+
+.plain-text-area {
+  border: 1px solid var(--warm-border);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  resize: vertical;
+  min-height: 200px;
+}
+
+.plain-text-area:hover,
+.plain-text-area:focus {
+  border-color: var(--warm-primary);
+}
+
+.parse-button {
+  background: var(--warm-primary);
+  border: none;
+  border-radius: 22px;
+  height: 44px;
+  font-size: 14px;
+}
+
+.parse-button:hover {
+  background: var(--warm-accent);
+}
+
+/* 纯文本摘抄显示区 */
+.plain-quotes-section {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.plain-quotes-card {
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  background: var(--warm-card);
+}
+
+.plain-quotes-card .ant-card-body {
+  padding: 32px;
+}
+
+.quote-limit-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.quote-limit-label {
+  font-size: 14px;
+  color: var(--warm-text-light);
+}
+
+.search-input {
+  flex: 1;
+  height: 44px;
+  border: 1px solid var(--warm-border);
+  border-radius: 22px;
+  font-size: 14px;
+}
+
+.search-input:hover {
+  border-color: var(--warm-primary);
+}
+
+.search-input:focus {
+  border-color: var(--warm-primary);
+  box-shadow: 0 0 0 2px rgba(212, 165, 116, 0.1);
+}
+
+.search-icon {
+  color: var(--warm-text-light);
+}
+
+.search-button {
+  height: 44px;
+  padding: 0 32px;
+  background: var(--warm-primary);
+  border: none;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.search-button:hover {
+  background: var(--warm-accent);
+}
+
+/* Loading */
+.loading-container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.loading-text {
+  margin-top: 16px;
+  color: var(--warm-text-light);
+  font-size: 14px;
+}
+
+/* 搜索结果 */
+.results-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 24px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-card:hover {
+  border-color: var(--warm-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--warm-shadow);
+}
+
+.book-cover {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  position: relative;
+  background: var(--warm-bg);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 165, 116, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 14px;
+}
+
+.book-card:hover .book-overlay {
+  opacity: 1;
+}
+
+.book-info {
+  padding: 16px;
+}
+
+.book-title {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.book-author {
+  font-size: 13px;
+  color: var(--warm-text-light);
+  margin-bottom: 4px;
+}
+
+.book-meta {
+  font-size: 12px;
+  color: var(--warm-text-light);
+}
+
+/* 书籍详情 */
+.book-detail-section {
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 1px solid var(--warm-border);
+  color: var(--warm-text);
+  background: var(--warm-card);
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.back-button:hover {
+  border-color: var(--warm-primary);
+  color: var(--warm-primary);
+  background: var(--warm-bg);
+}
+
+.book-detail-header {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--warm-border);
+}
+
+.detail-cover {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.detail-cover img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 12px;
+}
+
+.detail-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.rating-score {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--warm-primary);
+}
+
+.rating-label {
+  font-size: 13px;
+  color: var(--warm-text-light);
+}
+
+.detail-author,
+.detail-publisher {
+  font-size: 14px;
+  color: var(--warm-text-light);
+  margin-bottom: 8px;
+}
+
+.detail-summary {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--warm-text-light);
+  margin-top: 16px;
+}
+
+/* 摘抄条数选择面板 */
+.quote-limit-panel {
+  margin-top: 32px;
+  padding: 32px;
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 8px;
+}
+
+.panel-subtitle {
+  font-size: 14px;
+  color: var(--warm-text-light);
+  margin-bottom: 24px;
+}
+
+.quote-limit-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.load-quotes-button {
+  background: var(--warm-primary);
+  border: none;
+  border-radius: 22px;
+  height: 40px;
+  padding: 0 32px;
+  font-size: 14px;
+}
+
+.load-quotes-button:hover {
+  background: var(--warm-accent);
+}
+
+/* 摘抄区域 */
+.quotes-section {
+  margin-top: 32px;
+}
+
+.quotes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quotes-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-text);
+}
+
+.quotes-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.select-all-checkbox {
+  font-size: 14px;
+}
+
+.template-select {
+  min-width: 140px;
+}
+
+.emoji-select {
+  min-width: 100px;
+}
+
+.copy-button {
+  background: var(--warm-primary);
+  border: none;
+  height: 32px;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.copy-button:hover {
+  background: var(--warm-accent);
+}
+
+.copy-button:disabled {
+  background: var(--warm-border);
+  color: var(--warm-text-light);
+}
+
+/* 摘抄列表 */
+.quotes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quote-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: var(--warm-bg);
+  border: 1px solid var(--warm-border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.quote-item:hover {
+  background: var(--warm-card);
+  border-color: var(--warm-primary);
+}
+
+.quote-item.selected {
+  background: var(--warm-card);
+  border-color: var(--warm-primary);
+  box-shadow: 0 2px 8px var(--warm-shadow);
+}
+
+.quote-checkbox {
+  padding-top: 2px;
+}
+
+.quote-content {
+  flex: 1;
+}
+
+.quote-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--warm-text);
+  margin-bottom: 8px;
+}
+
+.quote-likes {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--warm-primary);
+}
+
+/* 分页 */
+.quotes-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px 0;
+}
+
+.quotes-pagination .ant-pagination-item {
+  border-color: var(--warm-border);
+}
+
+.quotes-pagination .ant-pagination-item-active {
+  background: var(--warm-primary);
+  border-color: var(--warm-primary);
+}
+
+.quotes-pagination .ant-pagination-item-active a {
+  color: white;
+}
+
+.quotes-pagination .ant-pagination-item:hover {
+  border-color: var(--warm-primary);
+}
+
+.quotes-pagination .ant-pagination-item:hover a {
+  color: var(--warm-primary);
+}
+
+.no-quotes {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--warm-text-light);
+  font-size: 14px;
+}
+
+.no-quotes-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.no-quotes-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 12px;
+}
+
+.no-quotes-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--warm-text-light);
+  margin-bottom: 24px;
+}
+
+.switch-tab-button {
+  background: var(--warm-primary);
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  padding: 0 28px;
+  font-size: 14px;
+}
+
+.switch-tab-button:hover {
+  background: var(--warm-accent);
+}
+
+/* 使用说明 */
+.instructions-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.instruction-card {
+  background: var(--warm-card);
+  border: 1px solid var(--warm-border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.instruction-number {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  background: var(--warm-primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.instruction-card h3 {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-text);
+  margin-bottom: 8px;
+}
+
+.instruction-card p {
+  font-size: 14px;
+  color: var(--warm-text-light);
+  line-height: 1.6;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .book-quote-container {
+    padding: 30px 16px 50px;
+  }
+
+  .hero-section {
+    margin-bottom: 40px;
+    padding-top: 50px; /* 为返回按钮留出空间 */
+  }
+
+  .home-back-button {
+    position: static;
+    margin: 0 auto 20px;
+  }
+
+  .search-wrapper {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .book-detail-section {
+    padding: 24px 16px;
+  }
+
+  .book-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .detail-cover {
+    width: 120px;
+  }
+
+  .quotes-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quotes-controls {
+    flex-direction: column;
+  }
+
+  .template-select,
+  .copy-button {
+    width: 100%;
+  }
+
+  .instructions-section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .quote-limit-panel {
+    padding: 24px 16px;
+  }
+
+  .quote-limit-options {
+    flex-direction: column;
+  }
+
+  .load-quotes-button {
+    width: 100%;
+  }
+
+  .plain-text-card .ant-card-body {
+    padding: 20px;
+  }
+
+  .plain-quotes-card .ant-card-body {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .book-detail-section {
+    padding: 20px 12px;
+  }
+
+  .quote-item {
+    padding: 12px;
+  }
+
+  .quote-text {
+    font-size: 14px;
+  }
+}
